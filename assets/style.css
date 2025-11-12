@@ -3,27 +3,42 @@
     --card-front-color: #144480;
     --card-back-color: #00F4BF;
 }
+
+/* ======= BASE ======= */
 body {
-    background: url('img/bg-desktop.webp');
-    font-family: Bai Jamjuree;
+    background: url('img/bg-desktop.webp') no-repeat center center/cover;
+    font-family: "Bai Jamjuree", sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
+/* ======= CONTAINER ======= */
 #container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+/* ======= CARTÕES ======= */
 .cartao {
-    margin: 1rem 1rem;
+    margin: 1rem;
     height: 20rem;
     flex-grow: 1;
-    flex-basis: calc(33% - 6rem);
+    flex-basis: calc(33% - 2rem);
+    perspective: 1000px; /* melhora o efeito 3D */
 }
+
 .cartao__conteudo {
     background-color: var(--card-front-color);
     text-align: center;
-    /* background-color: aquamarine; */
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 300ms ease-in-out;
+    position: relative;
+    border-radius: 0.8rem;
+    overflow: hidden;
 }
+
 .cartao__conteudo h3 {
     color: var(--text-color);
     border: 1px solid var(--text-color);
@@ -35,22 +50,28 @@ body {
     font-size: 1vw;
     backface-visibility: hidden;
 }
+
 .cartao__conteudo p {
-    margin-top: 1rem;
     padding: 2rem;
     margin-top: 4rem;
 }
+
+/* ======= PERGUNTA E RESPOSTA ======= */
 .cartao__conteudo__pergunta p {
     color: var(--text-color);
     font-weight: 500;
 }
+
 .cartao__conteudo__resposta p {
     color: var(--card-back-color);
     font-weight: 700;
 }
+
+/* ======= EFEITO FLIP ======= */
 .cartao:hover .cartao__conteudo {
     transform: rotateY(180deg);
 }
+
 .cartao__conteudo__pergunta,
 .cartao__conteudo__resposta {
     backface-visibility: hidden;
@@ -58,9 +79,12 @@ body {
     height: 100%;
     width: 100%;
 }
+
 .cartao__conteudo__resposta {
     transform: rotateY(180deg);
 }
+
+/* ======= RODAPÉ ======= */
 footer {
     background-color: black;
     color: white;
@@ -69,22 +93,28 @@ footer {
     width: 100%;
     height: 2rem;
 }
+
 footer p {
     text-align: center;
     font-size: 0.6rem;
     margin-top: 0.5rem;
 }
-@media(max-width:560px){
-    body{
-        background:url('img/bg-mobile.webp'), no-repeat cover;
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 560px) {
+    body {
+        background: url('img/bg-mobile.webp') no-repeat center center/cover;
     }
-}
-    .cartao{
-        flex:1 0 calc(100%-1rem)
-}
-.cartao_conteudo h3{
-    font-size:3vw;
-}
-.cartao_conteudo p{
-    font-size:3.8vw;
+
+    .cartao {
+        flex: 1 0 calc(100% - 1rem);
+    }
+
+    .cartao__conteudo h3 {
+        font-size: 3vw;
+    }
+
+    .cartao__conteudo p {
+        font-size: 3.8vw;
+    }
 }
